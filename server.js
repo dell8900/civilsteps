@@ -79,7 +79,13 @@ app.use("/api", score);
 app.use("/api", userAnswerRoutes);
 app.use("/api", getQuestionBySubjectAndTopicRouter);
 app.use("/api", paidTestRoute);
-
+app.get("/", async (req, res) => {
+ try {
+  res.send("Welcome to civil-steps");
+ } catch (error) {
+  console.log("error:", error);
+ }
+});
 app.use((err, req, res, next) => {
  console.error(err);
  res.status(500).send("Internal Server Error");
